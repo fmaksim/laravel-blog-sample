@@ -125,6 +125,8 @@ return [
 
     'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
+    'posts_per_page' => env('POSTS_PER_PAGE', 5),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
