@@ -10,7 +10,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::paginate(config('app.posts_per_page'));
         return view('blog.home', compact('posts'));
     }
 }

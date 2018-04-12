@@ -13,6 +13,7 @@
 
 Route::get('/', 'Blog\HomeController@index');
 Route::get('/post/{slug}', 'Blog\PostController@show')->name('post.show');
+Route::get('/category/{slug}', 'Blog\CategoryController@show')->name('category.show');
 
 Route::group([
     "namespace" => "Admin",
