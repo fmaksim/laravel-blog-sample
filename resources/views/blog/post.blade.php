@@ -12,7 +12,9 @@
                         </div>
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                <h6><a href="#"> {{$post->getCategoryTitle()}}</a></h6>
+                                <h6>
+                                    <a href="{{route('category.show', $post->category->slug)}}"> {{$post->getCategoryTitle()}}</a>
+                                </h6>
 
                                 <h1 class="entry-title"><a
                                             href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></h1>
@@ -24,7 +26,8 @@
                             </div>
                             <div class="decoration">
                                 @foreach($post->tags as $tag)
-                                    <a href="#" class="btn btn-default">{{$tag->title}}</a>
+                                    <a href="{{route('tag.show', $tag->slug)}}"
+                                       class="btn btn-default">{{$tag->title}}</a>
                                 @endforeach
                             </div>
 
