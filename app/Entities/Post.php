@@ -205,6 +205,35 @@ class Post extends Model
         );
     }
 
+    public function hasPrevious()
+    {
+        return self::where('id', '<', $this->id)->max('id');
+    }
+
+    public function hasNext()
+    {
+        return self::where('id', '>', $this->id)->min('id');
+    }
+
+    public function previous()
+    {
+        $postId = $this->hasPrevious();
+        return self::find($postId);
+    }
+
+    public function next()
+    {
+        $postId = $this->hasNext();
+        return self::find($postId);
+    }
+
+    public function related()
+    {
+        return self::all()->except($this->id);
+    }
+
+
+
     /**
      * Return the sluggable configuration array for this model.
      *

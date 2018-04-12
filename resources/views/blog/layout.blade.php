@@ -53,6 +53,6 @@
 @include('blog.partials.footer')
 
 <!-- js files -->
-<script type="text/javascript" src="/js/admin.js"></script>
+<script type="text/javascript" src="/js/blog.js"></script>
 </body>
 </html>
