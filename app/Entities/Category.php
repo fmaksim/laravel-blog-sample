@@ -16,6 +16,11 @@ class Category extends Model
         return $this->hasMany(Post::class);
     }
 
+    public static function getCategories()
+    {
+        return self::all();
+    }
+
     /**
      * Return the sluggable configuration array for this model.
      *

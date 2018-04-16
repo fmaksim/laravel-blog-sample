@@ -27,7 +27,6 @@ use Illuminate\Support\Facades\Storage;
  * @property date date
  *
  */
-
 class Post extends Model
 {
     use Sluggable;
@@ -37,6 +36,10 @@ class Post extends Model
 
     const IS_FEATURED = 1;
     const IS_STANDART = 0;
+
+    const LIMIT_POPULAR_POSTS = 3;
+    const LIMIT_FEATURED_POSTS = 3;
+    const LIMIT_RECENT_POSTS = 3;
 
     const NO_CATEGORY_TEXT = 'Без категории';
     const NO_TAGS_TEXT = 'Нет тегов';
@@ -80,10 +83,12 @@ class Post extends Model
 
     public function uploadImage($image)
     {
-        if($image === null) {return;}
+        if ($image === null) {
+            return;
+        }
 
         $this->deleteImage($image);
-        $filename = str_random(16) .'.'. $image->extension();
+        $filename = str_random(16) . '.' . $image->extension();
         $image->storeAs(self::UPLOAD_PATH, $filename);
 
         $this->image = $filename;
@@ -93,7 +98,9 @@ class Post extends Model
 
     private function deleteImage($image)
     {
-        if($image === null) {return;}
+        if ($image === null) {
+            return;
+        }
         Storage::delete(self::UPLOAD_PATH . $image);
     }
 
@@ -104,7 +111,9 @@ class Post extends Model
 
     public function setCategory($id)
     {
-        if($id === null) {return;}
+        if ($id === null) {
+            return;
+        }
 
         $category = Category::find($id);
         $this->category()->associate($category);
@@ -112,8 +121,31 @@ class Post extends Model
 
     public function setTags($ids)
     {
-        if($ids === null) {return;}
+        if ($ids === null) {
+            return;
+        }
         $this->tags()->sync($ids);
+    }
+
+    public static function getPopularPosts()
+    {
+        return self::orderBy("views", "desc")
+            ->take(self::LIMIT_POPULAR_POSTS)
+            ->get();
+    }
+
+    public static function getFeaturedPosts()
+    {
+        return self::where("is_featured", self::IS_FEATURED)
+            ->take(self::LIMIT_FEATURED_POSTS)
+            ->get();
+    }
+
+    public static function getRecentPosts()
+    {
+        return self::orderBy("id", "desc")
+            ->take(self::LIMIT_RECENT_POSTS)
+            ->get();
     }
 
 
@@ -133,7 +165,6 @@ class Post extends Model
         $this->status = self::STATUS_ACTIVE;
         $this->save();
     }
-
 
     public function toggleFeatured($status)
     {
@@ -231,7 +262,6 @@ class Post extends Model
     {
         return self::all()->except($this->id);
     }
-
 
 
     /**
