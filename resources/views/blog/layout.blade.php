@@ -25,9 +25,12 @@
                 </ul>
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
-                    <li><a href="{{route('register.form')}}">Register</a></li>
-                    <li><a href="about-me.html">Login</a></li>
-                    <li><a href="contact.html">My profile</a></li>
+                    @if(Auth::check())
+                        <li><a href="contact.html">My profile</a></li>
+                    @else
+                        <li><a href="{{route('register.form')}}">Register</a></li>
+                        <li><a href="{{route('login.form')}}">Login</a></li>
+                    @endif
                 </ul>
 
             </div>

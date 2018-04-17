@@ -19,6 +19,9 @@ Route::get('/tag/{slug}', 'Blog\TagController@show')->name('tag.show');
 Route::get('/register', 'Blog\AuthController@registerForm')->name('register.form');
 Route::post('/register', 'Blog\AuthController@register')->name('register');
 
+Route::get('/login', 'Blog\AuthController@loginForm')->name('login.form');
+Route::post('/login', 'Blog\AuthController@login')->name('login');
+
 Route::group([
     "namespace" => "Admin",
     "prefix" => "admin"

@@ -127,6 +127,9 @@ return [
 
     'posts_per_page' => env('POSTS_PER_PAGE', 5),
 
+    'success_login_message' => 'Succesfull login!',
+    'unsuccess_login_message' => 'Incorrect login or password!',
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

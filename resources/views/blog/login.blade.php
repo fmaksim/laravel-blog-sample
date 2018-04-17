@@ -10,19 +10,15 @@
 
                     <div class="leave-comment mr0"><!--leave comment-->
 
-                        <h3 class="text-uppercase">Register</h3>
+                        <h3 class="text-uppercase">Login</h3>
                         @include("admin.partials.errors")
+                        @if(session('status'))
+                            <div class="alert alert-danger">{{session('status')}}</div>
+                        @endif
                         <br>
                         <form class="form-horizontal contact-form" role="form" method="post"
-                              action="{{route('register')}}">
+                              action="{{route('login')}}">
                             {{csrf_field()}}
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" id="name" name="name"
-                                           value="{{old('name')}}"
-                                           placeholder="Name">
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <div class="col-md-12">
                                     <input type="text" class="form-control" id="email" name="email"
@@ -36,7 +32,7 @@
                                            placeholder="password">
                                 </div>
                             </div>
-                            <button type="submit" name="submit" class="btn send-btn">Register</button>
+                            <button type="submit" name="submit" class="btn send-btn">Login</button>
 
                         </form>
                     </div><!--end leave comment-->
@@ -46,5 +42,4 @@
         </div>
     </div>
     <!-- end main content-->
-
 @endsection
