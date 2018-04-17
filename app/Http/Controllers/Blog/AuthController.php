@@ -6,7 +6,6 @@ use App\Entities\User;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Controllers\Controller;
-
 use App\Services\AuthService;
 
 class AuthController extends Controller
@@ -49,6 +48,12 @@ class AuthController extends Controller
 
         return view('blog.login');
 
+    }
+
+    public function logout()
+    {
+        $this->authService->logout();
+        return redirect()->route('home');
     }
 
 

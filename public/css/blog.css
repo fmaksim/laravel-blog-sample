@@ -5126,6 +5126,12 @@ img.profile-image
     margin: 0px auto 20px;
     display: block;
 }
+
+.logout-form {
+    padding: 15px 30px;
+    font-size: 12px;
+    line-height: 36px;
+}
 /* lg */
 @media (min-width: 1400px) {
     .show-search {

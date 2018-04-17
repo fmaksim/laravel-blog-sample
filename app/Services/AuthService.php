@@ -22,4 +22,9 @@ class AuthService
 
     }
 
+    public function logout()
+    {
+        return Auth::logout();
+    }
+
 }

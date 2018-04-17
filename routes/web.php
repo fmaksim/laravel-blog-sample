@@ -22,6 +22,8 @@ Route::post('/register', 'Blog\AuthController@register')->name('register');
 Route::get('/login', 'Blog\AuthController@loginForm')->name('login.form');
 Route::post('/login', 'Blog\AuthController@login')->name('login');
 
+Route::post('/logout', 'Blog\AuthController@logout')->name('logout');
+
 Route::group([
     "namespace" => "Admin",
     "prefix" => "admin"
