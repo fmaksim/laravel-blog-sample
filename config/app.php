@@ -129,6 +129,7 @@ return [
 
     'success_login_message' => 'Succesfull login!',
     'unsuccess_login_message' => 'Incorrect login or password!',
+    'success_update_profile_message' => 'Profile succesfully updated!',
 
     /*
     |--------------------------------------------------------------------------

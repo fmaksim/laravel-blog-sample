@@ -22,7 +22,7 @@ Route::group([
     Route::get('/register', 'Blog\AuthController@registerForm')->name('register.form');
     Route::post('/register', 'Blog\AuthController@register')->name('register');
 
-    Route::get('/login', 'Blog\AuthController@loginForm')->name('login.form');
+    Route::get('/login', 'Blog\AuthController@loginForm')->name('login');
     Route::post('/login', 'Blog\AuthController@login')->name('login');
 });
 
@@ -30,6 +30,8 @@ Route::group([
     "middleware" => "auth"
 ], function () {
     Route::post('/logout', 'Blog\AuthController@logout')->name('logout');
+    Route::get('/profile', 'Blog\ProfileController@index')->name('profile');
+    Route::post('/profile', 'Blog\ProfileController@store')->name('profile.store');
 });
 
 Route::group([

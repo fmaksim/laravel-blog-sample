@@ -26,7 +26,7 @@
 
                 <ul class="nav navbar-nav text-uppercase pull-right">
                     @if(Auth::check())
-                        <li><a href="contact.html">My profile</a></li>
+                        <li><a href="{{route('profile')}}">My profile</a></li>
                         <li>
                             <form class="logout-form" action="{{route('logout')}}" method="POST">
                                 {{csrf_field()}}
@@ -35,7 +35,7 @@
                         </li>
                     @else
                         <li><a href="{{route('register.form')}}">Register</a></li>
-                        <li><a href="{{route('login.form')}}">Login</a></li>
+                        <li><a href="{{route('login')}}">Login</a></li>
                     @endif
                 </ul>
 

@@ -111,7 +111,7 @@ class User extends Authenticatable
         return ($value === null) ? $this->unban() : $this->ban();
     }
 
-    private function generatePassword($password)
+    public function generatePassword($password)
     {
         return ($password === null) ? '' : $this->password = bcrypt($password);
     }
