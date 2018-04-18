@@ -130,7 +130,9 @@ return [
     'success_login_message' => 'Succesfull login!',
     'unsuccess_login_message' => 'Incorrect login or password!',
     'success_update_profile_message' => 'Profile succesfully updated!',
-
+    'unsuccess_update_profile_message' => 'Error, please try later!',
+    'success_creating_comment' => 'Comment succesfully posted!',
+    'unsuccess_creating_comment' => 'Error, please try later!',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

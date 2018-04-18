@@ -32,6 +32,7 @@ Route::group([
     Route::post('/logout', 'Blog\AuthController@logout')->name('logout');
     Route::get('/profile', 'Blog\ProfileController@index')->name('profile');
     Route::post('/profile', 'Blog\ProfileController@store')->name('profile.store');
+    Route::post('/comment', 'Blog\CommentController@store')->name('comment.store');
 });
 
 Route::group([

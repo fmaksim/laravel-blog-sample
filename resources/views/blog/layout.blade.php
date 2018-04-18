@@ -55,6 +55,8 @@
     <!-- /.container-fluid -->
 </nav>
 
+@include('blog.partials.flush_messages')
+
 @yield('content')
 
 @include('blog.partials.footer')

@@ -106,60 +106,28 @@
                         </div>
                     </div><!--related post carousel-->
                     <div class="bottom-comment"><!--bottom comment-->
-                        <h4>3 comments</h4>
-
+                        <h4>{{$post->comments->count()}} comments</h4>
+                        @if(!$post->comments->isEmpty())
+                            @foreach($post->comments as $comment)
                         <div class="comment-img">
-                            <img class="img-circle" src="assets/images/comment-img.jpg" alt="">
+                            <img style="width: 75px; height: 75px;" class="img-circle"
+                                 src="{{$comment->author->getAvatar()}}" alt="">
                         </div>
 
                         <div class="comment-text">
-                            <a href="#" class="replay btn pull-right"> Replay</a>
-                            <h5>Rubel Miah</h5>
+                            <h5>{{$comment->author->name}}</h5>
 
                             <p class="comment-date">
-                                December, 02, 2015 at 5:57 PM
+                                {{$comment->created_at}}
                             </p>
 
-
-                            <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                                diam nonumy
-                                eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                                voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
+                            <p class="para">{{$comment->text}}</p>
                         </div>
+                            @endforeach
+                        @endif
                     </div>
                     <!-- end bottom comment-->
-
-
-                    <div class="leave-comment"><!--leave comment-->
-                        <h4>Leave a reply</h4>
-
-
-                        <form class="form-horizontal contact-form" role="form" method="post" action="#">
-                            <div class="form-group">
-                                <div class="col-md-6">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="email" class="form-control" id="email" name="email"
-                                           placeholder="Email">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" id="subject" name="subject"
-                                           placeholder="Website url">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-md-12">
-										<textarea class="form-control" rows="6" name="message"
-                                                  placeholder="Write Massage"></textarea>
-                                </div>
-                            </div>
-                            <a href="#" class="btn send-btn">Post Comment</a>
-                        </form>
-                    </div><!--end leave comment-->
+                    @include('blog.partials.comment_form')
                 </div>
                 @include('blog.partials.sidebar')
             </div>
