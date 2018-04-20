@@ -11,9 +11,6 @@
 
                         <h3 class="text-uppercase">My profile</h3>
                         @include('admin.partials.errors')
-                        @if(session('status'))
-                            <div class="alert alert-success">{{session('status')}}</div>
-                        @endif
                         <br>
                         <img src="{{$user->getAvatar()}}" alt="" class="profile-image">
                         <form class="form-horizontal contact-form" role="form" method="post"

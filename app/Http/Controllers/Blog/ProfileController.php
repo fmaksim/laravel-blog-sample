@@ -26,6 +26,12 @@ class ProfileController extends Controller
     public function store(UpdateProfileRequest $request)
     {
         if ($this->profileService->update($request))
-            return redirect()->back()->with('status', config('app.success_update_profile_message'));
+            return redirect()
+                ->back()
+                ->with('success', config('app.success_update_profile_message'));
+        else
+            return redirect()
+                ->back()
+                ->with('error', config('app.unsuccess_update_profile_message'));
     }
 }
