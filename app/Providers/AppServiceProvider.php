@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Entities\Category;
-use App\Entities\Post;
+use App\Services\PostService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,9 +16,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('blog.partials.sidebar', function ($view) {
-            $view->with("popularPost", Post::getPopularPosts());
-            $view->with("featuredPosts", Post::getFeaturedPosts());
-            $view->with("recentPosts", Post::getRecentPosts());
+            $view->with("popularPost", PostService::getPopular());
+            $view->with("featuredPosts", PostService::getFeatured());
+            $view->with("recentPosts", PostService::getRecent());
             $view->with("categories", Category::getCategories());
         });
     }

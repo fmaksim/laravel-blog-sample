@@ -8,7 +8,6 @@ use App\Entities\User;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class Post
@@ -55,132 +54,41 @@ class Post extends Model
         'title', 'content', 'date', 'description'
     ];
 
-    public static function create($fields)
+    public static function create()
     {
         $post = new static();
-        $post->fill($fields);
-        $post->user_id = 1;
 
-        $post->save();
         return $post;
-
     }
 
-    public function edit($fields)
+    public function category()
     {
-
-        $this->fill($fields);
-        $this->save();
-
+        return $this->belongsTo(Category::class);
     }
 
-    public function remove()
+    public function author()
     {
-        $this->deleteImage($this->image);
-        $this->delete();
-
+        return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function uploadImage($image)
+    public function comments()
     {
-        if ($image === null) {
-            return;
-        }
-
-        $this->deleteImage($image);
-        $filename = str_random(16) . '.' . $image->extension();
-        $image->storeAs(self::UPLOAD_PATH, $filename);
-
-        $this->image = $filename;
-        $this->save();
-
+        return $this->hasMany(Comment::class);
     }
 
-    private function deleteImage($image)
+    public function tags()
     {
-        if ($image === null) {
-            return;
-        }
-        Storage::delete(self::UPLOAD_PATH . $image);
+        return $this->belongsToMany(
+            Tag::class,
+            'post_tags',
+            'post_id',
+            'tag_id'
+        );
     }
 
     public function getImage()
     {
         return self::UPLOAD_PATH . $this->image;
-    }
-
-    public function setCategory($id)
-    {
-        if ($id === null) {
-            return;
-        }
-
-        $category = Category::find($id);
-        $this->category()->associate($category);
-    }
-
-    public function setTags($ids)
-    {
-        if ($ids === null) {
-            return;
-        }
-        $this->tags()->sync($ids);
-    }
-
-    public static function getPopularPosts()
-    {
-        return self::orderBy("views", "desc")
-            ->take(self::LIMIT_POPULAR_POSTS)
-            ->get();
-    }
-
-    public static function getFeaturedPosts()
-    {
-        return self::where("is_featured", self::IS_FEATURED)
-            ->take(self::LIMIT_FEATURED_POSTS)
-            ->get();
-    }
-
-    public static function getRecentPosts()
-    {
-        return self::orderBy("id", "desc")
-            ->take(self::LIMIT_RECENT_POSTS)
-            ->get();
-    }
-
-
-    public function toggleStatus($status)
-    {
-        return ($status === null) ? $this->setActive() : $this->setDraft();
-    }
-
-    private function setDraft()
-    {
-        $this->status = self::STATUS_DRAFT;
-        $this->save();
-    }
-
-    private function setActive()
-    {
-        $this->status = self::STATUS_ACTIVE;
-        $this->save();
-    }
-
-    public function toggleFeatured($status)
-    {
-        return ($status === null) ? $this->setStandart() : $this->setFeatured();
-    }
-
-    private function setFeatured()
-    {
-        $this->is_featured = self::IS_FEATURED;
-        $this->save();
-    }
-
-    private function setStandart()
-    {
-        $this->is_featured = self::IS_STANDART;
-        $this->save();
     }
 
     public function getCategoryTitle()
@@ -209,31 +117,6 @@ class Post extends Model
     public function getDate()
     {
         return Carbon::createFromFormat('Y-m-d', $this->attributes['date'])->format('F d, Y');
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function author()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function tags()
-    {
-        return $this->belongsToMany(
-            Tag::class,
-            'post_tags',
-            'post_id',
-            'tag_id'
-        );
     }
 
     public function hasPrevious()
