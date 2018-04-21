@@ -19,7 +19,7 @@ class PostController extends Controller
 
     public function show($slug)
     {
-        $post = Post::where("slug", $slug)->firstOrFail();
+        $post = $this->postService->getBySlug($slug);
         $activeComments = $this->postService->getActiveComments($post);
 
         return view("blog.post", compact('post', 'activeComments'));

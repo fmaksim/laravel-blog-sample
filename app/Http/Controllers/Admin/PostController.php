@@ -8,9 +8,17 @@ use App\Entities\Tag;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
+use App\Services\PostService;
 
 class PostController extends Controller
 {
+    protected $postService;
+
+    public function __construct(PostService $postService)
+    {
+        $this->postService = $postService;
+    }
+
     /**
      * Display a listing of the post.
      *
@@ -18,7 +26,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = $this->postService->getAll();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -43,29 +51,14 @@ class PostController extends Controller
      */
     public function store(PostCreateRequest $request)
     {
-        $post = Post::create($request->all());
-        $post->uploadImage($request->file('image'));
 
-        $post->setCategory($request->get('category_id'));
+        try {
+            $this->postService->create($request);
+            return redirect()->route('posts.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Post was not created');
+        }
 
-        $post->setTags($request->get('tags'));
-
-        $post->toggleFeatured($request->get('is_featured'));
-        $post->toggleStatus($request->get('status'));
-
-        return redirect()->route('posts.index');
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -76,7 +69,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::findOrFail($id);
+        $post = $this->postService->getById($id);
 
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
@@ -93,19 +86,12 @@ class PostController extends Controller
      */
     public function update(PostUpdateRequest $request, $id)
     {
-
-        $post = Post::findOrFail($id);
-        $post->fill($request->all());
-
-        $post->uploadImage($request->file('image'));
-
-        $post->setCategory($request->get('category_id'));
-        $post->setTags($request->get('tags'));
-
-        $post->toggleFeatured($request->get('is_featured'));
-        $post->toggleStatus($request->get('status'));
-
-        return redirect()->route('posts.index');
+        try {
+            $this->postService->update($request, $id);
+            return redirect()->route('posts.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Post was not updated');
+        }
     }
 
     /**
@@ -116,6 +102,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::findOrFail($id);
+        try {
+            $this->postService->remove($id);
+            return redirect()->route('posts.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Post was not deleted!');
+        }
     }
 }
