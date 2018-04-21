@@ -33,7 +33,8 @@
 
                             <div class="social-share">
 							<span
-                                    class="social-share-title pull-left text-capitalize">By Rubel On {{$post->getDate()}}</span>
+                                    class="social-share-title pull-left text-capitalize">By {{$post->author->name}}
+                                On {{$post->getDate()}}</span>
                                 <ul class="text-center pull-right">
                                     <li><a class="s-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                     <li><a class="s-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -45,11 +46,9 @@
                         </div>
                     </article>
                     <div class="top-comment"><!--top comment-->
-                        <img src="assets/images/comment.jpg" class="pull-left img-circle" alt="">
-                        <h4>Rubel Miah</h4>
-
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                            invidunt ut labore et dolore magna aliquyam erat.</p>
+                        <img width="50" height="50" style="padding: 0px; margin-right: 15px;"
+                             src="{{$post->author->getAvatar()}}" class="pull-left img-circle" alt="">
+                        <h4>{{$post->author->name}}</h4>
                     </div><!--top comment end-->
                     <div class="row"><!--blog next previous-->
                         @if($post->hasPrevious())
