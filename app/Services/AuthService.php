@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthService
 {
 
-    public function login($request)
+    public function login($request): bool
     {
         $data = [
             'email' => $request->get('email'),
@@ -22,9 +22,9 @@ class AuthService
 
     }
 
-    public function logout()
+    public function logout(): void
     {
-        return Auth::logout();
+        Auth::logout();
     }
 
 }
