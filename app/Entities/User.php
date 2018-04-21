@@ -59,29 +59,11 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public static function add($fields)
+    public static function add(): User
     {
 
         $user = new static();
-        $user->fill($fields);
-
-        $user->generatePassword($fields["password"]);
-        $user->save();
-
         return $user;
-    }
-
-    public function edit($fields)
-    {
-        $this->fill($fields);
-        $this->generatePassword($fields["password"]);
-        $this->save();
-    }
-
-    public function remove()
-    {
-        $this->deleteAvatar($this->avatar);
-        $this->delete();
     }
 
     public function getAvatar()
@@ -89,61 +71,4 @@ class User extends Authenticatable
         return self::UPLOAD_PATH . $this->avatar;
     }
 
-    public function uploadAvatar($avatar)
-    {
-        if($avatar === null) {return;}
-
-        $this->deleteAvatar($avatar);
-        $filename = str_random(16) .'.'. $avatar->extension();
-        $avatar->storeAs(self::UPLOAD_PATH, $filename);
-
-        $this->avatar = $filename;
-        $this->save();
-    }
-
-    public function toggleAdmin($value)
-    {
-        return ($value === null) ? $this->makeNormal() : $this->makeAdmin();
-    }
-
-    public function toggleBan($value)
-    {
-        return ($value === null) ? $this->unban() : $this->ban();
-    }
-
-    public function generatePassword($password)
-    {
-        return ($password === null) ? '' : $this->password = bcrypt($password);
-    }
-
-    private function ban()
-    {
-        $this->status = self::STATUS_BANNED;
-        $this->save();
-    }
-
-    private function unban()
-    {
-        $this->status = self::STATUS_NORMAL;
-        $this->save();
-    }
-
-    private function makeAdmin()
-    {
-        $this->is_admin = self::STATUS_ADMIN;
-        $this->save();
-    }
-
-    private function makeNormal()
-    {
-        $this->is_admin = self::STATUS_USER;
-        $this->save();
-    }
-
-
-    private function deleteAvatar($avatar)
-    {
-        if($avatar === null) {return;}
-        Storage::delete(self::UPLOAD_PATH . $avatar);
-    }
 }

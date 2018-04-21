@@ -6,9 +6,18 @@ use App\Entities\User;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Services\UserService;
 
 class UserController extends Controller
 {
+
+    protected $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     /**
      * Display a listing of the users.
      *
@@ -16,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = $this->userService->getAll();
         return view('admin.users.index', compact('users'));
     }
 
@@ -39,21 +48,12 @@ class UserController extends Controller
     public function store(UserCreateRequest $request)
     {
 
-        $user = User::add($request->all());
-        $user->uploadAvatar($request->file('avatar'));
-
-        return redirect()->route('users.index');
-    }
-
-    /**
-     * Display the specified user.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        try {
+            $this->userService->create($request);
+            return redirect()->route('users.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Registration error!');
+        }
     }
 
     /**
@@ -64,7 +64,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::findOrFail($id);
+        $user = $this->userService->getById($id);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -77,11 +77,12 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $user = User::findOrFail($id);
-        $user->edit($request->all());
-        $user->uploadAvatar($request->file('avatar'));
-
-        return redirect()->route('users.index');
+        try {
+            $this->userService->update($request, $id);
+            return redirect()->route('users.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Registration error!');
+        }
     }
 
     /**
@@ -92,9 +93,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->remove();
-
-        return redirect()->route('users.index');
+        try {
+            $this->userService->remove($id);
+            return redirect()->route('users.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Deleting user error!');
+        }
     }
 }

@@ -4,26 +4,31 @@ namespace App\Http\Controllers\Blog;
 
 use App\Entities\User;
 use App\Http\Requests\LoginRequest;
-use App\Http\Requests\RegisterRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserCreateRequest;
 use App\Services\AuthService;
+use App\Services\UserService;
 
 class AuthController extends Controller
 {
 
     protected $authService;
+    protected $userService;
 
-    public function __construct(AuthService $authService)
+    public function __construct(AuthService $authService, UserService $userService)
     {
         $this->authService = $authService;
+        $this->userService = $userService;
     }
 
-    public function register(RegisterRequest $request)
+    public function register(UserCreateRequest $request)
     {
-
-        User::add($request->all());
-        return redirect()->route('home');
-
+        try {
+            $this->userService->create($request);
+            return redirect()->route('home');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Registration error!');
+        }
     }
 
     public function registerForm()
