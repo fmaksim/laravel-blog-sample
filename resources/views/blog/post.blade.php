@@ -118,7 +118,7 @@
                             <h5>{{$comment->author->name}}</h5>
 
                             <p class="comment-date">
-                                {{$comment->created_at}}
+                                {{$comment->created_at->diffForHumans()}}
                             </p>
 
                             <p class="para">{{$comment->text}}</p>
