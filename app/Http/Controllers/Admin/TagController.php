@@ -6,9 +6,17 @@ use App\Entities\Tag;
 use App\Http\Requests\TagCreateRequest;
 use App\Http\Requests\TagUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Services\TagService;
 
 class TagController extends Controller
 {
+    protected $tagService;
+
+    public function __construct(TagService $tagService)
+    {
+        $this->tagService = $tagService;
+    }
+
     /**
      * Display a listing of the tags.
      *
@@ -16,7 +24,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::all();
+        $tags = $this->tagService->getAll();
         return view('admin.tags.index', compact('tags'));
     }
 
@@ -38,8 +46,13 @@ class TagController extends Controller
      */
     public function store(TagCreateRequest $request)
     {
-        Tag::create($request->all());
-        return redirect()->route('tags.index');
+        try {
+            $this->tagService->create($request);
+            return redirect()->route('tags.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Tag was not created!');
+        }
+
     }
 
     /**
@@ -50,7 +63,8 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        $tag = Tag::findOrFail($id);
+
+        $tag = $this->tagService->getById($id);
         return view('admin.tags.edit', compact('tag'));
     }
 
@@ -63,10 +77,13 @@ class TagController extends Controller
      */
     public function update(TagUpdateRequest $request, $id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->update($request->all());
 
-        return redirect()->route('tags.index');
+        try {
+            $this->tagService->update($request, $id);
+            return redirect()->route('tags.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Tag was not updated!');
+        }
     }
 
     /**
@@ -77,9 +94,11 @@ class TagController extends Controller
      */
     public function destroy($id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->delete();
-
-        return redirect()->route('tags.index');
+        try {
+            $this->tagService->remove($id);
+            return redirect()->route('tags.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Tag was not deleted!');
+        }
     }
 }

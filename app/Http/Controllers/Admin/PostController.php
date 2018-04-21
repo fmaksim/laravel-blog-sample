@@ -9,14 +9,17 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostCreateRequest;
 use App\Http\Requests\PostUpdateRequest;
 use App\Services\PostService;
+use App\Services\TagService;
 
 class PostController extends Controller
 {
     protected $postService;
+    protected $tagService;
 
-    public function __construct(PostService $postService)
+    public function __construct(PostService $postService, TagService $tagService)
     {
         $this->postService = $postService;
+        $this->tagService = $tagService;
     }
 
     /**
@@ -38,7 +41,7 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::pluck('title', 'id')->all();
-        $tags = Tag::pluck('title', 'id')->all();
+        $tags = $this->tagService->getKeyValueList();
 
         return view('admin.posts.create', compact('categories', 'tags'));
     }
@@ -72,7 +75,7 @@ class PostController extends Controller
         $post = $this->postService->getById($id);
 
         $categories = Category::pluck('title', 'id')->all();
-        $tags = Tag::pluck('title', 'id')->all();
+        $tags = $this->tagService->getKeyValueList();
 
         return view('admin.posts.edit', compact('categories', 'tags', 'post'));
     }
