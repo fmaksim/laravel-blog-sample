@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Services\ProfileService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,15 +23,17 @@ class ProfileController extends Controller
         return view('blog.profile', compact('user'));
     }
 
-    public function store(UpdateProfileRequest $request)
+    public function update(UserUpdateRequest $request)
     {
-        if ($this->profileService->update($request))
+        try {
+            $this->profileService->update($request);
             return redirect()
                 ->back()
                 ->with('success', config('app.success_update_profile_message'));
-        else
+        } catch (\Exception $e) {
             return redirect()
                 ->back()
                 ->with('error', config('app.unsuccess_update_profile_message'));
+        }
     }
 }

@@ -9,27 +9,24 @@
 namespace App\Services;
 
 
+use App\Entities\User;
+use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Auth;
-use Mockery\Exception;
 
 class ProfileService
 {
 
-    public function update($request)
+    protected $userService;
+
+    public function __construct(UserService $userService)
     {
-        try {
+        $this->userService = $userService;
+    }
 
-            $user = Auth::user();
-            $user->fill($request->all());
-            $user->generatePassword($request->get("password"));
-            $user->uploadAvatar($request->file("avatar"));
-            $user->save();
-            return true;
-
-        } catch (Exception $e) {
-            return false;
-        }
-
+    public function update(UserUpdateRequest $request): User
+    {
+        $id = Auth::user()->id;
+        return $this->userService->update($request, $id);
     }
 
 }

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: famin
- * Date: 19.4.18
- * Time: 0.30
- */
 
 namespace App\Services;
 
@@ -15,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CommentService
 {
 
-    public function create(PostCommentRequest $request)
+    public function create(PostCommentRequest $request): Comment
     {
 
         $comment = new Comment();

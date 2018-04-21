@@ -12,9 +12,9 @@
                         <h3 class="text-uppercase">My profile</h3>
                         @include('admin.partials.errors')
                         <br>
-                        <img src="{{$user->getAvatar()}}" alt="" class="profile-image">
+                        <img src="{{$user->getAvatar()}}" class="profile-image">
                         <form class="form-horizontal contact-form" role="form" method="post"
-                              enctype="multipart/form-data" action="{{route('profile.store')}}">
+                              enctype="multipart/form-data" action="{{route('profile.update')}}">
                             {{csrf_field()}}
                             <div class="form-group">
                                 <div class="col-md-12">

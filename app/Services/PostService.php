@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: famin
- * Date: 21.4.18
- * Time: 16.41
- */
 
 namespace App\Services;
 
