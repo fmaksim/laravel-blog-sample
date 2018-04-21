@@ -6,9 +6,17 @@ use App\Entities\Category;
 use App\Http\Requests\CategoryCreateRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use App\Http\Controllers\Controller;
+use App\Services\CategoryService;
 
 class CategoryController extends Controller
 {
+    protected $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     /**
      * Display a listing of the categories.
      *
@@ -16,7 +24,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = $this->categoryService->getAll();
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -38,8 +46,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryCreateRequest $request)
     {
-        Category::create($request->all());
-        return redirect()->route('categories.index');
+        try {
+            $this->categoryService->create($request);
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Category was not created!');
+        }
     }
 
     /**
@@ -50,7 +62,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::findOrFail($id);
+        $category = $this->categoryService->getById($id);
         return view('admin.categories.edit', compact('category'));
     }
 
@@ -63,9 +75,12 @@ class CategoryController extends Controller
      */
     public function update(CategoryUpdateRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
-        $category->update($request->all());
-        return redirect()->route('categories.index');
+        try {
+            $this->categoryService->update($request, $id);
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Category was not updated!');
+        }
     }
 
     /**
@@ -76,8 +91,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect()->route('categories.index');
+        try {
+            $this->categoryService->remove($id);
+            return redirect()->route('categories.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Category was not removed!');
+        }
     }
 }
