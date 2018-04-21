@@ -105,9 +105,9 @@
                         </div>
                     </div><!--related post carousel-->
                     <div class="bottom-comment"><!--bottom comment-->
-                        <h4>{{$post->comments->count()}} comments</h4>
-                        @if(!$post->comments->isEmpty())
-                            @foreach($post->comments as $comment)
+                        <h4>{{$activeComments->count()}} comments</h4>
+                        @if(!$activeComments->isEmpty())
+                            @foreach($activeComments as $comment)
                         <div class="comment-img">
                             <img style="width: 75px; height: 75px;" class="img-circle"
                                  src="{{$comment->author->getAvatar()}}" alt="">
