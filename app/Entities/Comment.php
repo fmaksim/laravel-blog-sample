@@ -13,27 +13,20 @@ use Illuminate\Database\Eloquent\Model;
  * @property int user_id
  * @property text text
  */
-
 class Comment extends Model
 {
     const STATUS_ACTIVE = 1;
     const STATUS_HIDDEN = 0;
 
-    public function toggleStatus($value)
-    {
-        return ($value === null) ? $this->disallow() : $this->allow();
-    }
+    const STATUS_TEXT_HIDDEN = 'hidden';
+    const STATUS_TEXT_ACTIVE = 'active';
 
-    private function allow()
+    public function isActive()
     {
-        $this->status = self::STATUS_ACTIVE;
-        $this->save();
-    }
-
-    private function disallow()
-    {
-        $this->status = self::STATUS_HIDDEN;
-        $this->save();
+        if ($this->status === self::STATUS_ACTIVE)
+            return true;
+        else
+            return false;
     }
 
     public function post()

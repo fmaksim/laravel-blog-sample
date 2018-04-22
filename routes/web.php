@@ -45,4 +45,6 @@ Route::group([
     Route::resource('tags', 'TagController');
     Route::resource('users', 'UserController');
     Route::resource('posts', 'PostController');
+    Route::resource('comments', 'CommentController');
+    Route::post('/comments/{id}/{status}', 'CommentController@toggleStatus')->name('comments.status');
 });

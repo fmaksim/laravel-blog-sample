@@ -55,7 +55,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified category.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -67,7 +67,7 @@ class CategoryController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified category in storage.
      *
      * @param  \App\Http\Requests\CategoryUpdateRequest  $request
      * @param  int  $id
