@@ -15,6 +15,9 @@ Route::get('/', 'Blog\HomeController@index')->name('home');
 Route::get('/post/{slug}', 'Blog\PostController@show')->name('post.show');
 Route::get('/category/{slug}', 'Blog\CategoryController@show')->name('category.show');
 Route::get('/tag/{slug}', 'Blog\TagController@show')->name('tag.show');
+Route::post('/subscribe', 'Blog\SubscribeController@subscribe')->name('subscribe');
+Route::post('/subscribe/verify/{token}', 'Blog\SubscribeController@verify');
+
 
 Route::group([
     "middleware" => "guest"
