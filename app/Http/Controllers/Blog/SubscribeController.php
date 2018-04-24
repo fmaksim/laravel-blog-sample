@@ -20,6 +20,7 @@ class SubscribeController extends Controller
     {
         try {
             $this->subscribeService->subscribe($request);
+            return redirect()->back()->with('success', 'Success subscribe!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Subscribe error, please try later!');
         }

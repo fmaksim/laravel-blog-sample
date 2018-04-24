@@ -57,7 +57,6 @@ class Post extends Model
     public static function create()
     {
         $post = new static();
-
         return $post;
     }
 

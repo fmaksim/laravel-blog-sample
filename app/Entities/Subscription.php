@@ -2,6 +2,7 @@
 
 namespace App\Entities;
 
+use App\Http\Requests\SubscribeRequest;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -11,17 +12,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property string email
  * @property string token
  */
-
 class Subscription extends Model
 {
-    public static function add($email)
+    const TOKEN_LENGTH = 100;
+
+    public static function add(SubscribeRequest $request): Subscription
     {
         $subscription = new static();
-        $subscription->email = $email;
-        $subscription->token = str_random(100);
+        $subscription->email = $request->get('email');
+        return $subscription;
+    }
 
-        $subscription->save();
+    public function generateToken(): void
+    {
+        $this->token = str_random(self::TOKEN_LENGTH);
+    }
 
+    public function saveSubscription(): void
+    {
+        $this->save();
     }
 
 }
