@@ -133,40 +133,5 @@
         </div>
     </div>
     <!-- end main content-->
-    <!--footer start-->
-    <div id="footer">
-        <div class="footer-instagram-section">
-            <h3 class="footer-instagram-title text-center text-uppercase">Instagram</h3>
-
-            <div id="footer-instagram" class="owl-carousel">
-
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-1.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-2.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-3.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-4.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-5.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-6.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-7.jpg" alt=""></a>
-                </div>
-                <div class="item">
-                    <a href="#"><img src="assets/images/ins-8.jpg" alt=""></a>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 @endsection
