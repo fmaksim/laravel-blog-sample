@@ -11,8 +11,9 @@
                             <div class="col-md-6">
                                 <article class="post post-grid">
                                     <div class="post-thumb">
-                                        <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}"
-                                                                                           alt=""></a>
+                                        <a href="{{route('post.show', $post->slug)}}">
+                                            <img src="{{$post->getImage()}}" alt="">
+                                        </a>
 
                                         <a href="{{route('post.show', $post->slug)}}"
                                            class="post-thumb-overlay text-center">

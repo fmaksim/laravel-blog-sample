@@ -29,5 +29,12 @@ class SubscribeController extends Controller
     public function verify($token)
     {
 
+        try {
+            $this->subscribeService->verify($token);
+            return redirect()->back()->with('success', 'Your subscripiton is succesfully verified!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error! Check verify token!');
+        }
+
     }
 }
