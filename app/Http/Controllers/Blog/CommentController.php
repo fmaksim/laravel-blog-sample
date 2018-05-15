@@ -18,14 +18,15 @@ class CommentController extends Controller
     public function store(PostCommentRequest $request)
     {
 
-        if ($this->commentService->create($request))
+        if ($this->commentService->create($request)) {
             return redirect()
                 ->back()
                 ->with('success', config('app.success_creating_comment'));
-        else
+        } else {
             return redirect()
                 ->back()
                 ->with('error', config('app.unsuccess_creating_comment'));
+        }
 
     }
 }

@@ -41,7 +41,7 @@ class CategoryController extends Controller
     /**
      * Store a newly created category in storage.
      *
-     * @param  \App\Http\Requests\CategoryCreateRequest  $request
+     * @param  \App\Http\Requests\CategoryCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryCreateRequest $request)
@@ -57,7 +57,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified category.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,8 +69,8 @@ class CategoryController extends Controller
     /**
      * Update the specified category in storage.
      *
-     * @param  \App\Http\Requests\CategoryUpdateRequest  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\CategoryUpdateRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryUpdateRequest $request, $id)
@@ -86,7 +86,7 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

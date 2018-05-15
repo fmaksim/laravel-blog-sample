@@ -15,8 +15,9 @@ class AuthService
             'password' => $request->get('password'),
         ];
 
-        if (Auth::attempt($data))
+        if (Auth::attempt($data)) {
             return true;
+        }
 
         return false;
 

@@ -41,8 +41,9 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
 
-        if ($this->authService->login($request))
+        if ($this->authService->login($request)) {
             return redirect()->route('home');
+        }
 
         return redirect()->back()->with('status', config('app.unsuccess_login_message'));
 

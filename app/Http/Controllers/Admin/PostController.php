@@ -49,7 +49,7 @@ class PostController extends Controller
     /**
      * Store a newly created post in storage.
      *
-     * @param  \App\Http\Requests\PostCreateRequest  $request
+     * @param  \App\Http\Requests\PostCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(PostCreateRequest $request)
@@ -67,7 +67,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -83,8 +83,8 @@ class PostController extends Controller
     /**
      * Update the specified post in storage.
      *
-     * @param  \App\Http\Requests\PostUpdateRequest  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\PostUpdateRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(PostUpdateRequest $request, $id)
@@ -100,7 +100,7 @@ class PostController extends Controller
     /**
      * Remove the specified post from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

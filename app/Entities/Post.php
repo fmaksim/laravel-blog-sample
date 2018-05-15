@@ -51,7 +51,10 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'title', 'content', 'date', 'description'
+        'title',
+        'content',
+        'date',
+        'description'
     ];
 
     public static function create()

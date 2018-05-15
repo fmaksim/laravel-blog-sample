@@ -23,10 +23,11 @@ class Comment extends Model
 
     public function isActive()
     {
-        if ($this->status === self::STATUS_ACTIVE)
+        if ($this->status === self::STATUS_ACTIVE) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
     public function post()

@@ -41,7 +41,7 @@ class TagController extends Controller
     /**
      * Store a newly created tag in storage.
      *
-     * @param  \App\Http\Requests\TagCreateRequest  $request
+     * @param  \App\Http\Requests\TagCreateRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(TagCreateRequest $request)
@@ -58,7 +58,7 @@ class TagController extends Controller
     /**
      * Show the form for editing the specified tag.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -71,8 +71,8 @@ class TagController extends Controller
     /**
      * Update the specified tag in storage.
      *
-     * @param  \App\Http\Requests\TagUpdateRequest  $request
-     * @param  int  $id
+     * @param  \App\Http\Requests\TagUpdateRequest $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(TagUpdateRequest $request, $id)
@@ -89,7 +89,7 @@ class TagController extends Controller
     /**
      * Remove the specified tag from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
