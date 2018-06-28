@@ -30,7 +30,6 @@ class CommentService
 
         $comment->save();
         return $comment;
-
     }
 
     public function toggleStatus($id, $status)
@@ -51,5 +50,4 @@ class CommentService
         $comment->status = Comment::STATUS_HIDDEN;
         $comment->save();
     }
-
 }

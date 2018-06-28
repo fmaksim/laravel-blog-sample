@@ -2101,7 +2101,7 @@ google.maps = google.maps || {};
             }
         }
         _.Jb = ""
-    };
+    }
     Kc.prototype.get = function () {
         var a;
         0 < this.R ? (this.R--, a = this.j, this.j = a.next, a.next = null) : a = this.T();

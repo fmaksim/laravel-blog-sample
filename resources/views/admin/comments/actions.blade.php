@@ -12,7 +12,7 @@
                 'id' => 'changeStatus' . $comment->id,
                 'style' => 'float: left;'
           ])}}
-<a href="javascript:;" onclick="document.getElementById('changeStatus{{$comment->id}}').submit(); return false;"
+<a href="javascript:" onclick="document.getElementById('changeStatus{{$comment->id}}').submit(); return false;"
    style="float: left;" class="fa {{$buttonStyle}}"></a>
 {{Form::close()}}
 

@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: famin
- * Date: 23.4.18
- * Time: 23.36
- */
 
 namespace App\Services;
-
 
 use App\Entities\Subscription;
 use App\Http\Requests\SubscribeRequest;
@@ -23,9 +16,9 @@ class SubscribeService
         $subscription->generateToken();
         $subscription->saveSubscription();
         //send mail
-        Mail::to($request
-            ->get('email'))
+        Mail::to(
+            $request->get('email')
+        )
             ->send(new VerifySubscription($subscription->token));
     }
-
 }

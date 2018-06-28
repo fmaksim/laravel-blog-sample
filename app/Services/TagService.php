@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Entities\Tag;
 use App\Http\Requests\TagCreateRequest;
 use App\Http\Requests\TagUpdateRequest;
@@ -46,5 +45,4 @@ class TagService
     {
         return Tag::findOrFail($id);
     }
-
 }

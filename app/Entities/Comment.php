@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Comment
- * @package App\Entities
+ *
+ * @package  App\Entities
  * @property int id
  * @property int status
  * @property int post_id

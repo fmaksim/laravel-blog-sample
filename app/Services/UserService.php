@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Entities\User;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
@@ -75,7 +74,6 @@ class UserService
         $avatar->storeAs(User::UPLOAD_PATH, $filename);
 
         $this->user->avatar = $filename;
-
     }
 
     private function deleteAvatar($avatar)
@@ -110,5 +108,4 @@ class UserService
     {
         $this->user->is_admin = User::STATUS_USER;
     }
-
 }

@@ -27,6 +27,5 @@ class CommentController extends Controller
                 ->back()
                 ->with('error', config('app.unsuccess_creating_comment'));
         }
-
     }
 }

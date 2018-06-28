@@ -11,7 +11,8 @@ use Illuminate\Support\Carbon;
 
 /**
  * Class Post
- * @package App\Entities
+ *
+ * @package  App\Entities
  * @property int id
  * @property string content
  * @property string title
@@ -24,7 +25,6 @@ use Illuminate\Support\Carbon;
  * @property int status
  * @property int is_featured
  * @property date date
- *
  */
 class Post extends Model
 {

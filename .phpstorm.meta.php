@@ -3,7 +3,7 @@ namespace PHPSTORM_META {
 
    /**
     * PhpStorm Meta file, to provide autocomplete information for PhpStorm
-    * Generated on 2018-03-26 18:32:31.
+    * Generated on 2018-06-28 22:10:02.
     *
     * @author Barry vd. Heuvel <barryvdh@gmail.com>
     * @see https://github.com/barryvdh/laravel-ide-helper
@@ -133,13 +133,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::make(0), map([
         '' => '@',
@@ -266,13 +266,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
     override(\Illuminate\Contracts\Container\Container::makeWith(0), map([
         '' => '@',
@@ -399,13 +399,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
     override(\App::make(0), map([
         '' => '@',
@@ -532,13 +532,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
     override(\App::makeWith(0), map([
         '' => '@',
@@ -665,13 +665,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
     override(\app(0), map([
         '' => '@',
@@ -798,13 +798,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
     override(\resolve(0), map([
         '' => '@',
@@ -931,13 +931,13 @@ namespace PHPSTORM_META {
         'translation.loader' => \Illuminate\Translation\FileLoader::class,
         'translator' => \Illuminate\Translation\Translator::class,
         'validation.presence' => \Illuminate\Validation\DatabasePresenceVerifier::class,
-        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
-        'html' => \Collective\Html\HtmlBuilder::class,
-        'form' => \Collective\Html\FormBuilder::class,
         'command.ide-helper.generate' => \Barryvdh\LaravelIdeHelper\Console\GeneratorCommand::class,
         'command.ide-helper.models' => \Barryvdh\LaravelIdeHelper\Console\ModelsCommand::class,
         'command.ide-helper.meta' => \Barryvdh\LaravelIdeHelper\Console\MetaCommand::class,
         'command.ide-helper.eloquent' => \Barryvdh\LaravelIdeHelper\Console\EloquentCommand::class,
+        'command.tinker' => \Laravel\Tinker\Console\TinkerCommand::class,
+        'html' => \Collective\Html\HtmlBuilder::class,
+        'form' => \Collective\Html\FormBuilder::class,
     ]));
 
     override(\Illuminate\Support\Arr::add(0), type(0));

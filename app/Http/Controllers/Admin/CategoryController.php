@@ -70,7 +70,7 @@ class CategoryController extends Controller
      * Update the specified category in storage.
      *
      * @param  \App\Http\Requests\CategoryUpdateRequest $request
-     * @param  int $id
+     * @param  int                                      $id
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryUpdateRequest $request, $id)

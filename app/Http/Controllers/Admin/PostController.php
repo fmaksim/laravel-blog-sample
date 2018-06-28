@@ -61,7 +61,6 @@ class PostController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Post was not created');
         }
-
     }
 
     /**
@@ -84,7 +83,7 @@ class PostController extends Controller
      * Update the specified post in storage.
      *
      * @param  \App\Http\Requests\PostUpdateRequest $request
-     * @param  int $id
+     * @param  int                                  $id
      * @return \Illuminate\Http\Response
      */
     public function update(PostUpdateRequest $request, $id)

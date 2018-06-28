@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use Illuminate\Support\Facades\Auth;
 
 class AuthService
@@ -20,12 +19,10 @@ class AuthService
         }
 
         return false;
-
     }
 
     public function logout(): void
     {
         Auth::logout();
     }
-
 }

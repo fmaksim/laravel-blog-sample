@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Storage;
 
 /**
  * Class User
- * @package App\Entities
+ *
+ * @package  App\Entities
  * @property int id
  * @property string name
  * @property string email
@@ -70,5 +71,4 @@ class User extends Authenticatable
     {
         return self::UPLOAD_PATH . $this->avatar;
     }
-
 }

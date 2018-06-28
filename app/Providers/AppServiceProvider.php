@@ -15,12 +15,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        view()->composer('blog.partials.sidebar', function ($view) {
-            $view->with("popularPost", PostService::getPopular());
-            $view->with("featuredPosts", PostService::getFeatured());
-            $view->with("recentPosts", PostService::getRecent());
-            $view->with("categories", Category::getCategories());
-        });
+        view()->composer(
+            'blog.partials.sidebar',
+            function ($view) {
+                $view->with("popularPost", PostService::getPopular());
+                $view->with("featuredPosts", PostService::getFeatured());
+                $view->with("recentPosts", PostService::getRecent());
+                $view->with("categories", Category::getCategories());
+            }
+        );
     }
 
     /**

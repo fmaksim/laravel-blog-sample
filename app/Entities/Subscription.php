@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Subscription
- * @package App\Entities
+ *
+ * @package  App\Entities
  * @property int id
  * @property string email
  * @property string token
@@ -32,5 +33,4 @@ class Subscription extends Model
     {
         $this->save();
     }
-
 }

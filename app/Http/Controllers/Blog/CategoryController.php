@@ -22,7 +22,5 @@ class CategoryController extends Controller
         $posts = $category->posts()->paginate(config('app.posts_per_page'));
 
         return view('blog.list', compact('posts'));
-
-
     }
 }

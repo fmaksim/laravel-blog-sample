@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Entities\Category;
 use App\Http\Requests\CategoryCreateRequest;
 
@@ -41,5 +40,4 @@ class CategoryService
         return Category::where("slug", $slug)
             ->firstOrFail();
     }
-
 }

@@ -35,6 +35,5 @@ class SubscribeController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error! Check verify token!');
         }
-
     }
 }

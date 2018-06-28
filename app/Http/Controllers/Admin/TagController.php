@@ -52,7 +52,6 @@ class TagController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Tag was not created!');
         }
-
     }
 
     /**
@@ -72,7 +71,7 @@ class TagController extends Controller
      * Update the specified tag in storage.
      *
      * @param  \App\Http\Requests\TagUpdateRequest $request
-     * @param  int $id
+     * @param  int                                 $id
      * @return \Illuminate\Http\Response
      */
     public function update(TagUpdateRequest $request, $id)

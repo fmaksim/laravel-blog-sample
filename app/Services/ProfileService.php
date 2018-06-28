@@ -8,7 +8,6 @@
 
 namespace App\Services;
 
-
 use App\Entities\User;
 use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Support\Facades\Auth;
@@ -28,5 +27,4 @@ class ProfileService
         $id = Auth::user()->id;
         return $this->userService->update($request, $id);
     }
-
 }

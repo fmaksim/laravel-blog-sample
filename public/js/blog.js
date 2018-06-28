@@ -78,20 +78,7 @@ k||m<=this.options.screenMaxWidth)&&this.element.is(":visible")};c.prototype.loc
 break;case e.Absolute:a=c[0].getBoundingClientRect();d=a.top-this.baseTop;f=a.left-this.margin.left;0<=d?this.reset():(a=b.parent()[0].getBoundingClientRect(),a.bottom+this.baseParentOffset+this.offsetHeight>b.outerHeight(!1)+this.basePadding&&this.setFixed(f+r,a.bottom,-this.offsetHeight));break;default:a=b[0].getBoundingClientRect();d=a.top-this.baseTop;if(0<=d)break;c.height(b.height());c.show();f=a.left-this.margin.left;this.options.scope==l.Document?this.setFixed(f,a.bottom,0):b.parent()[0].getBoundingClientRect().bottom+
 this.baseParentOffset<=b.outerHeight(!1)+this.basePadding?this.setAbsolute(this.element.position().left):this.setFixed(f+r,a.bottom,0);c.width()||c.width(b.width())}else this.stick!=e.None&&this.reset()};c.prototype.resize=function(){this.bound();this.precalculate();if(this.stick!=e.None){var a=this.element,b=this.spacer;a.width(b.width());b.height(a.height());this.stick==e.Fixed&&(b=this.spacer[0].getBoundingClientRect().left-this.margin.left,a.css("left",b+"px"))}this.locate()};c.prototype.destroy=
 function(){this.reset();this.spacer.remove();this.element.removeData("jquery-stickit")};var p,m,v=["destroy"];b.fn.stickit=function(a,d){"string"==typeof a?-1!=b.inArray(a,v)&&this.each(function(){var c=b(this).data("jquery-stickit");c&&c[a].apply(c,d)}):(t||(t=!0,n(),b(h).ready(function(){b(g).bind("resize",n).bind("scroll",u)})),d=a,this.each(function(){var a=new c(this,d);b(this).data("jquery-stickit",a);a.locate()}));return this}})(jQuery,window,document);
-/**
-* Project: Bootstrap Hover Dropdown
-* Author: Cameron Spear
-* Contributors: Mattia Larentis
-*
-* Dependencies: Bootstrap's Dropdown plugin, jQuery
-*
-* A simple plugin to enable Bootstrap dropdowns to active on hover and provide a nice user experience.
-*
-* License: MIT
-*
-* http://cameronspear.com/blog/bootstrap-dropdown-on-hover-plugin/
-*/
-;(function ($, window, undefined) {
+(function ($, window, undefined) {
     // outside the scope of the jQuery plugin to
     // keep track of all dropdowns
     var $allDropdowns = $();
@@ -191,7 +178,7 @@ function(){this.reset();this.spacer.remove();this.element.removeData("jquery-sti
 /* ---------------------------------------------
  common scripts
  --------------------------------------------- */
-;(function ($) {
+(function ($) {
     'use strict'; // use strict to start
 
     /* === Stickit === */

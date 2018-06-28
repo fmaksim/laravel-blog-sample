@@ -35,7 +35,6 @@ class AuthController extends Controller
     {
 
         return view('blog.register');
-
     }
 
     public function login(LoginRequest $request)
@@ -46,14 +45,12 @@ class AuthController extends Controller
         }
 
         return redirect()->back()->with('status', config('app.unsuccess_login_message'));
-
     }
 
     public function loginForm()
     {
 
         return view('blog.login');
-
     }
 
     public function logout()
@@ -61,6 +58,4 @@ class AuthController extends Controller
         $this->authService->logout();
         return redirect()->route('home');
     }
-
-
 }

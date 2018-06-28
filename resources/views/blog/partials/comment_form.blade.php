@@ -11,7 +11,7 @@
                                                   placeholder="Write Massage"></textarea>
                 </div>
             </div>
-            <a href="javascript:;" onclick="this.parentNode.submit();" class="btn send-btn">Post Comment</a>
+            <a href="javascript:" onclick="this.parentNode.submit();" class="btn send-btn">Post Comment</a>
         </form>
     @else
         <h4>Please, login for leaving comments</h4>

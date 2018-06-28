@@ -72,7 +72,7 @@ class UserController extends Controller
      * Update the specified user in storage.
      *
      * @param  \App\Http\Requests\UserUpdateRequest $request
-     * @param  int $id
+     * @param  int                                  $id
      * @return \Illuminate\Http\Response
      */
     public function update(UserUpdateRequest $request, $id)

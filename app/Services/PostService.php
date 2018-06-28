@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-
 use App\Entities\Post;
 use App\Entities\Category;
 use App\Http\Requests\PostCreateRequest;
@@ -176,7 +175,5 @@ class PostService
         $image->storeAs(Post::UPLOAD_PATH, $filename);
 
         $this->post->image = $filename;
-
     }
-
 }
